@@ -125,7 +125,7 @@ export default function AchievementsPage() {
   return (
     <div className="achievements-page animate-fade-in">
       <header className="page-header">
-        <h1>🏆 Conquistas</h1>
+        <h1>🏆 Conquistas {getSelectedChild()?.name ? `de ${getSelectedChild().name}` : ''}</h1>
         <p>Cada marco é uma vitória que merece ser celebrada</p>
       </header>
 
