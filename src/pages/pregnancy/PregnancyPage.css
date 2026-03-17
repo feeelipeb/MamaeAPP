@@ -1,0 +1,12 @@
+.pregnancy-module-container {
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+}
+
+.pregnancy-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}

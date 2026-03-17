@@ -1,0 +1,156 @@
+.prenatal-module {
+  padding: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.flex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.flex-header h2 {
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  margin: 0;
+}
+
+.add-appointment-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+}
+
+.empty-state {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.empty-icon-large {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.empty-state p {
+  color: #777;
+  font-size: 0.95rem;
+}
+
+.appointments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.appointment-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  position: relative;
+  gap: 1.5rem;
+}
+
+.appt-icon {
+  font-size: 2.5rem;
+  background: var(--color-background);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.appt-content {
+  flex-grow: 1;
+}
+
+.appt-header {
+  margin-bottom: 0.5rem;
+}
+
+.appt-type {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 0.2rem;
+  font-weight: 600;
+}
+
+.appt-date {
+  font-size: 0.85rem;
+  color: #777;
+  font-weight: 500;
+}
+
+.appt-doctor {
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+
+.appt-notes {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+  background: #f9f9f9;
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.appt-file-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #1d4ed8;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  background: #eff6ff;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  transition: background 0.2s ease;
+}
+
+.appt-file-link:hover {
+  background: #dbeafe;
+}
+
+.delete-appt-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+/* Modal Form Styles */
+.prenatal-modal {
+  max-width: 450px !important;
+}
+
+.appt-form {
+  margin-top: 1.5rem;
+}
+
+.file-input {
+  padding: 0.5rem !important;
+  font-size: 0.9rem;
+}

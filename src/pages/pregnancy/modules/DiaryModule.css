@@ -1,0 +1,145 @@
+.diary-module {
+  padding: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.diary-module .internal-header {
+  margin-bottom: 2rem;
+}
+
+.diary-module .subtitle {
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+  margin-top: -0.5rem;
+}
+
+.diary-section {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.diary-section label {
+  display: block;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.diary-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.symptoms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.8rem;
+}
+
+.symptom-toggle {
+  background: var(--color-background);
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.symptom-toggle.active {
+  background: #D8B4FE; /* Lilac from palette */
+  color: #2d3748; /* Dark text for high contrast */
+  border-color: #b78cf0;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(216, 180, 254, 0.6);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
+}
+
+.checkbox-label {
+  display: flex !important;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  margin-bottom: 0 !important;
+}
+
+.movement-details {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed #eee;
+}
+
+.save-diary-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+/* History Section */
+.diary-history-section {
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.history-title {
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.history-card {
+  background: #f9f9f9;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  padding: 1.2rem;
+}
+
+.history-week {
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+.history-note {
+  color: #666;
+  font-size: 0.95rem;
+  font-style: italic;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+}
+
+.history-symptoms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.symptom-tag {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #555;
+}

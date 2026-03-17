@@ -1,0 +1,144 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.modal-container {
+  background: white;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  padding: 32px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.modal-close:hover {
+  color: var(--pink-dark);
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.modal-trophy {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.milestone-name-title {
+  color: var(--lilac-dark);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-top: 4px;
+}
+
+.milestone-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.photo-upload-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photo-preview-container {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px dashed var(--lilac-light);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--white);
+  margin-top: 8px;
+}
+
+.photo-preview-container:hover {
+  border-color: var(--lilac);
+  background: var(--beige);
+}
+
+.photo-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+}
+
+.photo-placeholder span {
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.age-calculation {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.modal-actions button {
+  flex: 1;
+}
+
+.btn-save {
+  background: linear-gradient(135deg, var(--lilac), var(--pink)) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.btn-save:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .modal-container {
+    padding: 24px;
+  }
+}

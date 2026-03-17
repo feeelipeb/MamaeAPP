@@ -1,0 +1,125 @@
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.deco-circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+.deco-1 {
+  width: 300px;
+  height: 300px;
+  background: var(--pink);
+  top: -80px;
+  right: -60px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.deco-2 {
+  width: 200px;
+  height: 200px;
+  background: var(--lilac);
+  bottom: -40px;
+  left: -40px;
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+.deco-3 {
+  width: 150px;
+  height: 150px;
+  background: var(--beige);
+  top: 40%;
+  left: 10%;
+  animation: float 7s ease-in-out infinite 1s;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-xl);
+  padding: 40px 36px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(216, 180, 254, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login-logo-img {
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 8px;
+  animation: float 4s ease-in-out infinite;
+}
+
+.login-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.login-form .btn-primary {
+  margin-top: 8px;
+  padding: 14px;
+  font-size: 1rem;
+}
+
+.login-form .btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.login-switch {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-switch p {
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.login-switch .btn-ghost {
+  font-weight: 600;
+  color: var(--lilac-dark);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 32px 24px;
+    border-radius: var(--radius-lg);
+  }
+}

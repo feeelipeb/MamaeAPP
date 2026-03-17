@@ -1,0 +1,430 @@
+/* ===== Baby Page ===== */
+.baby-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 16px 100px;
+}
+
+.baby-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.baby-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.baby-header h1 {
+  font-size: 1.75rem;
+  margin: 0;
+}
+
+.add-baby-btn {
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+}
+
+/* ── Toast Notification ── */
+.toast-notification {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #edfff5;
+  color: #1a8a4a;
+  border: 1px solid #b8f0d0;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-md);
+  z-index: 1100;
+}
+
+@keyframes slideInDown {
+  from { opacity: 0; transform: translate(-50%, -20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.animate-slide-in {
+  animation: slideInDown 0.3s ease-out forwards;
+}
+
+/* ── Empty State ── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius-lg);
+  border: 2px dashed rgba(216, 180, 254, 0.4);
+}
+
+.empty-state-icon {
+  font-size: 4rem;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--pink-light) 0%, var(--lilac-light) 100%);
+  border-radius: 50%;
+  margin-bottom: 24px;
+}
+
+.empty-state h2 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+/* ── Baby List ── */
+.baby-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.baby-list-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(216, 180, 254, 0.2);
+  transition: var(--transition);
+}
+
+.baby-list-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(216, 180, 254, 0.5);
+}
+
+.baby-card-photo {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(216, 180, 254, 0.3);
+}
+
+.baby-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.baby-avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--pink-light) 0%, var(--lilac-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+.baby-card-info {
+  flex: 1;
+}
+
+.baby-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.baby-age {
+  display: inline-block;
+  background: var(--lilac-light);
+  color: var(--lilac-dark);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.baby-details p {
+  font-size: 0.85rem;
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.details-btn {
+  color: var(--lilac-dark);
+  font-weight: 600;
+}
+
+.details-btn:hover {
+  background: var(--lilac-light);
+}
+
+/* ── Modal Cadastrar Bebê ── */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; /* Agora preenche a tela inteira */
+  background: rgba(61, 44, 78, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5vh 16px 5vh; /* Top e bottom com espaço */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-content {
+  background: var(--white);
+  width: 100%;
+  max-width: 500px;
+  border-radius: var(--radius-lg);
+  padding: 32px 24px 24px; /* Menos padding inferior para economizar espaço */
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  margin: auto;
+  flex-shrink: 0;
+  display: flex; /* Transforma em flex container */
+  flex-direction: column; /* Organiza os itens verticalmente */
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  border-radius: 50%;
+  z-index: 10; /* Garante que fica clicável acima do conteúdo */
+}
+
+.modal-close:hover {
+  background: var(--bg-color);
+  color: var(--text-primary);
+}
+
+.modal-title {
+  text-align: center;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 0 24px;
+}
+
+/* Form Styles */
+.baby-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-group.half {
+  flex: 1;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: var(--bg-color);
+  transition: var(--transition);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--lilac-dark);
+  box-shadow: 0 0 0 3px rgba(216, 180, 254, 0.2);
+}
+
+.input-field::placeholder {
+  color: #adb5bd;
+}
+
+/* Photo Upload */
+.photo-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.photo-upload-wrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px dashed var(--pink-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: var(--transition);
+  background: var(--bg-color);
+  margin-bottom: 8px;
+}
+
+.photo-upload-wrapper:hover {
+  border-color: var(--pink-dark);
+  background: rgba(249, 198, 206, 0.1);
+}
+
+.photo-upload-placeholder {
+  font-size: 2rem;
+  color: var(--pink-dark);
+}
+
+.photo-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hidden-input {
+  display: none;
+}
+
+.photo-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+/* Form Layout */
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-group.half {
+  flex: 1;
+}
+
+/* Gender Selector */
+.gender-selector {
+  display: flex;
+  gap: 12px;
+}
+
+.gender-card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  background: var(--white);
+  border: 2px solid rgba(216, 180, 254, 0.3);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.gender-card:hover {
+  background: var(--lilac-light);
+}
+
+.gender-card.active {
+  border-color: var(--lilac-dark);
+  background: rgba(216, 180, 254, 0.15);
+  color: var(--lilac-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.gender-emoji {
+  font-size: 1.2rem;
+}
+
+/* Modal Actions */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(216, 180, 254, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .baby-list-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .baby-card-photo {
+    width: 64px;
+    height: 64px;
+    align-self: flex-start;
+  }
+  
+  .baby-card-action {
+    width: 100%;
+  }
+  
+  .details-btn {
+    width: 100%;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+  }
+}

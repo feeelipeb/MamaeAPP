@@ -1,0 +1,175 @@
+.active-pregnancy-dashboard {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Header */
+.pregnancy-header {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  padding: 24px;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 182, 193, 0.3);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.pregnancy-header h1 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.btn-finish-pregnancy {
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  font-size: 0.8rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.trimester-badge {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.tri-1 {
+  background-color: var(--pink-light);
+  color: var(--pink-dark);
+}
+
+.tri-2 {
+  background-color: var(--lilac-light);
+  color: var(--lilac-dark);
+}
+
+.tri-3 {
+  background-color: #fef08a; /* Soft Gold/Yellow */
+  color: #854d0e;
+}
+
+.week-display {
+  text-align: center;
+  width: 100%;
+}
+
+.week-display h2 {
+  font-size: 2.2rem;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.week-display .of-40 {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 12px;
+  background: rgba(0,0,0,0.05);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Menu Grid */
+.menu-title {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  margin-left: 4px;
+}
+
+.pregnancy-modules-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.module-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-lg);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.module-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.module-card.tri-1:hover { border-color: var(--pink-light); background: rgba(254, 226, 226, 0.3); }
+.module-card.tri-2:hover { border-color: var(--lilac-light); background: rgba(233, 213, 255, 0.3); }
+.module-card.tri-3:hover { border-color: #fef08a; background: rgba(254, 240, 138, 0.2); }
+
+.module-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+.module-card span {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+/* Sub-view adjustments */
+.btn-back-modules {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: var(--pink-dark);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.btn-back-modules:hover {
+  text-decoration: underline;
+}
+
+.submodule-container {
+  width: 100%;
+  flex: 1;
+}

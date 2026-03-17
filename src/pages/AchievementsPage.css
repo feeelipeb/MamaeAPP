@@ -1,0 +1,299 @@
+.achievements-page {
+  max-width: 1000px;
+}
+
+.page-header {
+  margin-bottom: 32px;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-card {
+  text-align: center;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 500px;
+}
+
+.big-emoji {
+  font-size: 4rem;
+  margin-bottom: 10px;
+}
+
+.child-selector {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.child-chip {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid var(--lilac-light);
+  background: white;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.child-chip.active {
+  background: var(--lilac);
+  border-color: var(--lilac);
+  color: white;
+  box-shadow: 0 4px 12px rgba(216, 180, 254, 0.4);
+}
+
+.progress-section {
+  padding: 24px;
+  margin-bottom: 32px;
+  background: white;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 12px;
+}
+
+.progress-text {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.celebration-text {
+  font-size: 0.85rem;
+  color: var(--pink-dark);
+  font-weight: 500;
+}
+
+.progress-bar-container {
+  height: 12px;
+  background: var(--beige);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--lilac), var(--pink));
+  border-radius: 6px;
+  transition: width 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.category-dropdown-container {
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.category-dropdown-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.category-dropdown-btn:hover {
+  border-color: var(--lilac-dark);
+}
+
+.category-dropdown-btn.active {
+  border-color: var(--lilac);
+  background: #fdfaff;
+}
+
+.selected-cat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.selected-cat strong {
+  color: var(--text-primary);
+  font-weight: 800;
+}
+
+.category-dropdown-btn .arrow {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  transition: transform 0.3s;
+}
+
+.category-dropdown-btn .arrow.down {
+  transform: rotate(90deg);
+}
+
+.cat-emoji {
+  font-size: 1.5rem;
+}
+
+/* Reusing Mobile Menu Styles from Activities via import, but adding overrides if needed */
+.mobile-menu-item.active {
+  background: #f5f3ff;
+  border-color: var(--lilac);
+  color: var(--lilac-dark);
+}
+
+.milestones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.milestone-card {
+  padding: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.milestone-card.pending {
+  border: 2px dashed var(--lilac-light);
+  background: white;
+}
+
+.milestone-card.achieved {
+  background: linear-gradient(135deg, rgba(249, 198, 206, 0.2), rgba(216, 180, 254, 0.2));
+  border: 1px solid var(--lilac-light);
+}
+
+.milestone-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.milestone-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.milestone-emoji {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.check-icon {
+  color: #4ade80;
+  font-size: 1.2rem;
+}
+
+.category-badge {
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  background: var(--lilac-light);
+  color: var(--lilac-dark);
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.milestone-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.pending-info p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+.btn-register {
+  width: 100%;
+  padding: 10px;
+  background: var(--white);
+  border: 1px solid var(--lilac-light);
+  border-radius: 8px;
+  color: var(--lilac-dark);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.milestone-card:hover .btn-register {
+  background: var(--lilac);
+  color: white;
+  border-color: var(--lilac);
+}
+
+.required-badge {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.7rem;
+  color: var(--pink-dark);
+  font-weight: 600;
+}
+
+.achievement-date {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.achievement-notes {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-style: italic;
+}
+
+.btn-edit {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.btn-edit:hover {
+  background: var(--white);
+  color: var(--lilac);
+}
+
+@media (max-width: 600px) {
+  .milestones-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .progress-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}

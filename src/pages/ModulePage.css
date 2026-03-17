@@ -1,0 +1,13 @@
+.shell-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 300px;
+}
+
+.page-shell .shell-icon {
+  box-shadow: var(--shadow-md);
+}
+
+.page-shell .shell-badge {
+  animation: pulse 2s ease-in-out infinite;
+}
