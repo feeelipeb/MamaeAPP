@@ -185,9 +185,17 @@ export default function CalendarPage() {
       }
 
       // 7. Vaccines
+      // We filter by user_id through the children table to be safe
       const { data: vacs } = await supabase
         .from('vaccines')
-        .select('*, children(name)')
+        .select(`
+          *,
+          children!inner (
+            name,
+            user_id
+          )
+        `)
+        .eq('children.user_id', user.id)
         .gte('scheduled_date', startOfMonth.split('T')[0])
         .lte('scheduled_date', endOfMonth.split('T')[0]);
       
