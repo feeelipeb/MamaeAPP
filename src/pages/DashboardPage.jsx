@@ -1,6 +1,7 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { supabase } from '../lib/supabaseClient';
 import { FiSearch, FiChevronRight, FiX, FiArrowRight } from 'react-icons/fi';
 import { RECIPES } from '../data/recipesData';
 import { ACTIVITIES } from '../data/activitiesData';
@@ -29,7 +30,58 @@ export default function DashboardPage() {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [achievementsCount, setAchievementsCount] = useState(null);
   const searchInputRef = useRef(null);
+
+  useEffect(() => {
+    if (user) {
+      fetchAchievementsCount();
+    }
+  }, [user]);
+
+  // Lock body scroll when search is active
+  useEffect(() => {
+    if (isSearchFocused || searchTerm) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isSearchFocused, searchTerm]);
+
+  const fetchAchievementsCount = async () => {
+    try {
+      // 1. Get user's children ids
+      const { data: children, error: childrenError } = await supabase
+        .from('children')
+        .select('id')
+        .eq('user_id', user.id);
+
+      if (childrenError) throw childrenError;
+
+      if (!children || children.length === 0) {
+        setAchievementsCount(0);
+        return;
+      }
+
+      const childrenIds = children.map(c => c.id);
+
+      // 2. Count achieved milestones for those children
+      const { count, error } = await supabase
+        .from('milestones')
+        .select('*', { count: 'exact', head: true })
+        .in('child_id', childrenIds)
+        .eq('is_achieved', true);
+
+      if (error) throw error;
+      setAchievementsCount(count || 0);
+    } catch (err) {
+      console.error('Error fetching achievements count:', err);
+      setAchievementsCount(0);
+    }
+  };
 
   const focusSearch = () => {
     if (searchInputRef.current) {
@@ -209,29 +261,36 @@ export default function DashboardPage() {
         </div>
 
         <div className="modules-list-vertical">
-          {allModules.map((mod, index) => (
-            <Link
-              key={mod.path}
-              to={mod.path}
-              className="list-module-item animate-slide-up"
-              style={{ animationDelay: `${index * 0.05}s` }}
-            >
-              <div className="item-number">{mod.id}</div>
-              <div className="item-icon-container">
-                <span className="item-emoji">{mod.emoji}</span>
-              </div>
-              <div className="item-content">
-                <h4>{mod.label}</h4>
-                <p>{mod.description}</p>
-              </div>
-              <div className="item-status">
-                <span className="status-badge">{mod.status}</span>
-                <div className="play-button-small">
-                  <div className="play-icon"></div>
+          {allModules.map((mod, index) => {
+            // Dynamic status for Achievements
+            const displayStatus = mod.id === '06' && achievementsCount !== null 
+              ? `${achievementsCount}/${MILESTONES_DATA.length}` 
+              : mod.status;
+
+            return (
+              <Link
+                key={mod.path}
+                to={mod.path}
+                className="list-module-item animate-slide-up"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <div className="item-number">{mod.id}</div>
+                <div className="item-icon-container">
+                  <span className="item-emoji">{mod.emoji}</span>
                 </div>
-              </div>
-            </Link>
-          ))}
+                <div className="item-content">
+                  <h4>{mod.label}</h4>
+                  <p>{mod.description}</p>
+                </div>
+                <div className="item-status">
+                  <span className="status-badge">{displayStatus}</span>
+                  <div className="play-button-small">
+                    <div className="play-icon"></div>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </div>
