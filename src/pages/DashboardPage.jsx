@@ -255,42 +255,44 @@ export default function DashboardPage() {
       </header>
 
       <div className="content-sheet">
-        <div className="sheet-header">
-          <h3>Meus Módulos</h3>
-          <FiChevronRight className="arrow-more" />
-        </div>
+        <div className="sheet-container">
+          <div className="sheet-header">
+            <h3>Meus Módulos</h3>
+            <FiChevronRight className="arrow-more" />
+          </div>
 
-        <div className="modules-list-vertical">
-          {allModules.map((mod, index) => {
-            // Dynamic status for Achievements
-            const displayStatus = mod.id === '06' && achievementsCount !== null 
-              ? `${achievementsCount}/${MILESTONES_DATA.length}` 
-              : mod.status;
+          <div className="modules-list-vertical">
+            {allModules.map((mod, index) => {
+              // Dynamic status for Achievements
+              const displayStatus = mod.id === '06' && achievementsCount !== null 
+                ? `${achievementsCount}/${MILESTONES_DATA.length}` 
+                : mod.status;
 
-            return (
-              <Link
-                key={mod.path}
-                to={mod.path}
-                className="list-module-item animate-slide-up"
-                style={{ animationDelay: `${index * 0.05}s` }}
-              >
-                <div className="item-number">{mod.id}</div>
-                <div className="item-icon-container">
-                  <span className="item-emoji">{mod.emoji}</span>
-                </div>
-                <div className="item-content">
-                  <h4>{mod.label}</h4>
-                  <p>{mod.description}</p>
-                </div>
-                <div className="item-status">
-                  <span className="status-badge">{displayStatus}</span>
-                  <div className="play-button-small">
-                    <div className="play-icon"></div>
+              return (
+                <Link
+                  key={mod.path}
+                  to={mod.path}
+                  className="list-module-item animate-slide-up"
+                  style={{ animationDelay: `${index * 0.05}s` }}
+                >
+                  <div className="item-number">{mod.id}</div>
+                  <div className="item-icon-container">
+                    <span className="item-emoji">{mod.emoji}</span>
                   </div>
-                </div>
-              </Link>
-            );
-          })}
+                  <div className="item-content">
+                    <h4>{mod.label}</h4>
+                    <p>{mod.description}</p>
+                  </div>
+                  <div className="item-status">
+                    <span className="status-badge">{displayStatus}</span>
+                    <div className="play-button-small">
+                      <div className="play-icon"></div>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

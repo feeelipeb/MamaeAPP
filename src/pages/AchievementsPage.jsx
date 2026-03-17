@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 import { useAuth } from '../contexts/AuthContext';
 import { MILESTONES_DATA, CATEGORIES } from '../data/milestonesData';
-import { FiAward, FiFilter, FiCheckCircle, FiChevronRight, FiEdit2, FiX } from 'react-icons/fi';
+import { FiAward, FiFilter, FiCheckCircle, FiChevronRight, FiEdit2, FiX, FiRepeat } from 'react-icons/fi';
 import { createPortal } from 'react-dom';
 import MilestoneModal from '../components/MilestoneModal';
 import './AchievementsPage.css';
@@ -174,8 +174,8 @@ export default function AchievementsPage() {
           <p>Cada marco é uma vitória que merece ser celebrada</p>
         </div>
         {children.length > 1 && (
-          <button className="btn btn-ghost switch-baby-btn" onClick={() => setSelectedChildId(null)}>
-            🔄 Trocar Bebê
+          <button className="btn btn-ghost switch-baby-btn" onClick={() => navigate('/dashboard/conquistas')}>
+            <FiRepeat /> Trocar Bebê
           </button>
         )}
       </header>
