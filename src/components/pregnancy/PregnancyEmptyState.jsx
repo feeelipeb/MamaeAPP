@@ -36,8 +36,10 @@ export default function PregnancyEmptyState({ completedPregnancies, onPregnancyC
               >
                 <span className="year-label">{p.year_label}</span>
                 <div className="past-dates">
-                  <small>Concepção: {new Date(p.conception_date).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}</small>
-                  <small>Parto previsto: {new Date(p.due_date).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}</small>
+                  <small>Descoberta: {new Date(p.discovery_date || p.conception_date).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}</small>
+                  {p.status !== 'cancelled' && (
+                    <small>Parto previsto: {new Date(p.due_date).toLocaleDateString('pt-BR', { timeZone: 'UTC' })}</small>
+                  )}
                 </div>
               </div>
             ))}

@@ -10,19 +10,19 @@ export default function PregnancyFinishModal({ pregnancy, onClose, onFinish }) {
   const [birthDate, setBirthDate] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
-  const markPregnancyCompleted = async () => {
+  const markPregnancyStatus = async (status) => {
     setSubmitting(true);
     try {
       const { error } = await supabase
         .from('pregnancies')
-        .update({ status: 'completed' })
+        .update({ status: status })
         .eq('id', pregnancy.id);
       
       if (error) throw error;
       return true;
     } catch (err) {
-      console.error("Error completing pregnancy:", err);
-      alert("Erro ao finalizar a gestação.");
+      console.error(`Error updating pregnancy to ${status}:`, err);
+      alert("Erro ao atualizar o status da gestação.");
       return false;
     } finally {
       setSubmitting(false);
@@ -35,7 +35,7 @@ export default function PregnancyFinishModal({ pregnancy, onClose, onFinish }) {
       return;
     }
 
-    const success = await markPregnancyCompleted();
+    const success = await markPregnancyStatus('completed');
     if (success) {
       onFinish(); // To trigger list refresh in background
       onClose();
@@ -46,7 +46,7 @@ export default function PregnancyFinishModal({ pregnancy, onClose, onFinish }) {
 
   const handleCancelPregnancy = async () => {
     if (window.confirm("Você tem certeza? Isso vai encerrar a gestação sem registrar um bebê.")) {
-      const success = await markPregnancyCompleted();
+      const success = await markPregnancyStatus('cancelled');
       if (success) {
         onFinish();
         onClose();

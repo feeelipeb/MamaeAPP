@@ -30,11 +30,11 @@ export default function PregnancyPage() {
       if (data && data.length > 0) {
         // Find active
         const active = data.find(p => p.status === 'active');
-        // Find completed
-        const completed = data.filter(p => p.status === 'completed');
+        // Find completed or cancelled
+        const past = data.filter(p => p.status === 'completed' || p.status === 'cancelled');
 
         setActivePregnancy(active || null);
-        setCompletedPregnancies(completed || []);
+        setCompletedPregnancies(past || []);
       } else {
         setActivePregnancy(null);
         setCompletedPregnancies([]);
