@@ -34,7 +34,7 @@ export default function Sidebar() {
     <aside className="sidebar">
       <div className="sidebar-header">
         <div className="sidebar-logo">
-          <img src="/logo.png" alt="MamãeApp Logo" className="logo-img" />
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="MamãeApp Logo" className="logo-img" />
         </div>
       </div>
 

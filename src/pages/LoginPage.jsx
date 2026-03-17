@@ -53,7 +53,7 @@ export default function LoginPage() {
 
       <div className="login-container animate-fade-in">
         <div className="login-header">
-          <img src="/logo.png" alt="MamãeApp Logo" className="login-logo-img" />
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="MamãeApp Logo" className="login-logo-img" />
           <p className="login-subtitle">
             {isSignUp
               ? 'Crie sua conta e comece a acompanhar cada momento ✨'
