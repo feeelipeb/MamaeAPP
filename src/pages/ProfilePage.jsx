@@ -139,42 +139,35 @@ export default function ProfilePage() {
   }
 
   const childrenLabel = buildChildrenLabel(children);
+  const firstName = profile?.name?.split(' ')[0]; // Added firstName
 
   return (
     <div className="profile-page animate-fade-in">
-      {/* ── Avatar Section ── */}
-      <section className="profile-hero">
-        <div className="avatar-wrapper" onClick={() => fileInputRef.current?.click()}>
-          {profile?.avatar_url ? (
-            <img
-              src={profile.avatar_url}
-              alt="Foto de perfil"
-              className="avatar-img"
-            />
-          ) : (
-            <div className="avatar-placeholder">
-              <span>👩</span>
+      <div className="profile-content">
+        {/* ── Avatar Section ── */}
+        <section className="profile-hero">
+          <div
+            className="avatar-wrapper"
+            onClick={() => fileInputRef.current?.click()}
+            title="Alterar foto de perfil"
+          >
+            {profile?.avatar_url ? (
+              <img src={profile.avatar_url} alt="Avatar" className="avatar-img" />
+            ) : (
+              <div className="avatar-placeholder">
+                {firstName ? firstName.charAt(0).toUpperCase() : <FiCamera />}
+              </div>
+            )}
+            <div className={`avatar-camera ${uploading ? 'uploading' : ''}`}>
+              {uploading ? <div className="mini-spinner" /> : <FiCamera />}
             </div>
-          )}
-          <div className={`avatar-camera ${uploading ? 'uploading' : ''}`}>
-            {uploading ? <div className="mini-spinner" /> : <FiCamera />}
-          </div>
-          <input
-            type="file"
-            ref={fileInputRef}
-            accept="image/*"
-            onChange={handleAvatarUpload}
-            className="avatar-input"
-          />
-        </div>
-
-        <h1 className="profile-name">{profile?.name || 'Mamãe'}</h1>
-
-        {childrenLabel && (
-          <p className="profile-children-label">{childrenLabel} 💕</p>
-        )}
-      </section>
-
+            <input
+              type="file"
+              ref={fileInputRef}
+              onChange={handleAvatarUpload}
+              accept="image/*"
+              className="avatar-input"
+            />
       {/* ── Cards Section ── */}
       <section className="profile-cards">
         {/* Plan Card */}

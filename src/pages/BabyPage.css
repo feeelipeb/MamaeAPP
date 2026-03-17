@@ -1,8 +1,8 @@
 /* ===== Baby Page ===== */
 .baby-page {
-  max-width: 800px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 20px 16px 100px;
+  padding: 40px 24px 100px;
 }
 
 .baby-loading {
@@ -92,22 +92,21 @@
 
 /* ── Baby List ── */
 .baby-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
 }
 
 .baby-list-card {
   display: flex;
   align-items: center;
   gap: 20px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  padding: 20px;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid rgba(216, 180, 254, 0.2);
-  transition: var(--transition);
+  background: white;
+  padding: 24px;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(216, 180, 254, 0.1);
+  transition: all 0.3s ease;
 }
 
 .baby-list-card:hover {
@@ -394,37 +393,13 @@
 }
 
 /* Responsive */
-@media (max-width: 600px) {
-  .baby-list-card {
-    flex-direction: column;
-    align-items: flex-start;
+@media (max-width: 768px) {
+  .baby-list {
+    grid-template-columns: 1fr;
     gap: 16px;
   }
   
-  .baby-card-photo {
-    width: 64px;
-    height: 64px;
-    align-self: flex-start;
-  }
-  
-  .baby-card-action {
-    width: 100%;
-  }
-  
-  .details-btn {
-    width: 100%;
-  }
-
-  .form-row {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .modal-actions {
-    flex-direction: column-reverse;
-  }
-
-  .modal-actions .btn {
-    width: 100%;
+  .baby-list-card {
+    padding: 20px;
   }
 }

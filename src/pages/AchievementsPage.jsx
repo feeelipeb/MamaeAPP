@@ -29,10 +29,13 @@ export default function AchievementsPage() {
   useEffect(() => {
     if (childId) {
       setSelectedChildId(childId);
-    } else if (children.length > 1) {
-      setSelectedChildId(null);
-    } else if (children.length === 1) {
-      setSelectedChildId(children[0].id);
+    } else {
+      // Direct entry: handle automatic selection or selection screen
+      if (children.length === 1) {
+        setSelectedChildId(children[0].id);
+      } else if (children.length > 1) {
+        setSelectedChildId(null);
+      }
     }
   }, [childId, children.length]);
 
