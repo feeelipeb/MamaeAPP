@@ -162,10 +162,9 @@ export default function ProfilePage() {
                   </div>
                 )}
                 
-                {/* Visual Indicator Overlay */}
-                <div className="avatar-overlay">
+                {/* Visual Indicator Badge (Bottom Corner) */}
+                <div className="avatar-badge">
                   <FiCamera />
-                  <span>Trocar</span>
                 </div>
               </div>
             </div>
