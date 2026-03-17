@@ -1,7 +1,7 @@
 .active-pregnancy-dashboard {
   display: flex;
   flex-direction: column;
-  padding: 24px 20px;
+  padding: 24px 20px calc(var(--bottom-nav-height) + 40px);
   max-width: 600px;
   margin: 0 auto;
 }
