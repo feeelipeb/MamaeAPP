@@ -161,6 +161,12 @@ export default function ProfilePage() {
                     {firstName ? firstName.charAt(0).toUpperCase() : 'M'}
                   </div>
                 )}
+                
+                {/* Visual Indicator Overlay */}
+                <div className="avatar-overlay">
+                  <FiCamera />
+                  <span>Trocar</span>
+                </div>
               </div>
             </div>
             
