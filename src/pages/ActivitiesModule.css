@@ -1,9 +1,7 @@
 .activities-container {
-  padding: 24px 20px 100px;
-  max-width: 100%;
-  width: 900px;
+  padding: 40px 24px 100px;
+  max-width: 1200px;
   margin: 0 auto;
-  box-sizing: border-box;
 }
 
 .intro-card-section {
@@ -92,9 +90,9 @@
 
 /* Age Grid */
 .stages-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
 }
 
 .stage-activity-card {
@@ -228,11 +226,9 @@
 
 /* Stage Detail List */
 .activity-stage-container {
-  padding: 24px 20px 100px;
-  max-width: 100%;
-  width: 900px;
+  padding: 40px 24px 100px;
+  max-width: 1000px;
   margin: 0 auto;
-  box-sizing: border-box;
 }
 
 .back-btn {
@@ -272,12 +268,18 @@
   line-height: 1.6;
   font-weight: 500;
   color: #334155;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+}
+
+.activities-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 .activity-item-card {
   background: white;
-  padding: 16px 20px;
+  padding: 18px 20px;
   border-radius: var(--radius-lg);
   display: flex;
   justify-content: space-between;
@@ -285,8 +287,8 @@
   border: 1px solid #f1f5f9;
   box-shadow: var(--shadow-sm);
   cursor: pointer;
-  transition: transform 0.2s;
-  margin-bottom: 12px;
+  transition: all 0.2s;
+  height: 100%;
 }
 
 .activity-item-main h4 {

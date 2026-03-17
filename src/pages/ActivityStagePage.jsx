@@ -117,22 +117,26 @@ export default function ActivityStagePage() {
       </div>
 
       <div className="activities-list">
-        {filteredActivities.map((activity, i) => (
+        {filteredActivities.map((activity, index) => (
           <div 
-            key={i} 
-            className="activity-item-card"
+            key={index} 
+            className="activity-item-card animate-slide-up"
+            style={{ animationDelay: `${index * 0.05}s` }}
             onClick={() => setSelectedActivity(activity)}
           >
             <div className="activity-item-main">
               <h4>{activity.name}</h4>
               <div className="activity-meta">
-                <span className="cat-tag">
-                  {CATEGORIES.find(cat => cat.id === activity.category)?.emoji} {activity.category}
+                <span className="cat-tag" style={{ 
+                  backgroundColor: getCategoryColor(activity.category) + '15',
+                  color: getCategoryColor(activity.category)
+                }}>
+                  {activity.category}
                 </span>
-                <span className="duration-tag">{activity.duration}</span>
+                <span className="duration-tag">⏱️ {activity.duration}</span>
               </div>
             </div>
-            <FiArrowRight />
+            <FiChevronRight className="arrow-icon" />
           </div>
         ))}
         {filteredActivities.length === 0 && (

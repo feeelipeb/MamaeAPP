@@ -168,59 +168,67 @@ export default function ProfilePage() {
               accept="image/*"
               className="avatar-input"
             />
-      {/* ── Cards Section ── */}
-      <section className="profile-cards">
-        {/* Plan Card */}
-        <div className={`profile-card plan-card ${isPremium ? 'premium' : 'free'}`}>
-          <div className="plan-card-header">
-            <div className="plan-card-icon">
-              {isPremium ? <FiStar /> : <FiClock />}
-            </div>
-            <div className="plan-card-info">
-              <span className="plan-card-label">Plano</span>
-              <span className={`plan-badge ${isPremium ? 'badge-premium' : 'badge-free'}`}>
-                {isPremium ? '⭐ Premium' : 'Gratuito'}
-              </span>
-            </div>
-            <FiChevronRight className="plan-card-arrow" />
           </div>
+          <h1 className="profile-name">{profile?.name || 'Usuária'}</h1>
+          <p className="profile-children-label">
+            {childrenLabel || 'Mamãe'} 💕
+          </p>
+        </section>
 
-          {isPremium ? (
-            <div className="plan-details">
-              <div className="plan-expiry">
-                <FiClock />
-                <span>
-                  {remaining} {remaining === 1 ? 'dia restante' : 'dias restantes'}
+        {/* ── Cards Section ── */}
+        <section className="profile-cards">
+          {/* Plan Card */}
+          <div className={`profile-card plan-card ${isPremium ? 'premium' : 'free'}`}>
+            <div className="plan-card-header">
+              <div className="plan-card-icon">
+                {isPremium ? <FiStar /> : <FiClock />}
+              </div>
+              <div className="plan-card-info">
+                <span className="plan-card-label">Plano</span>
+                <span className={`plan-badge ${isPremium ? 'badge-premium' : 'badge-free'}`}>
+                  {isPremium ? '⭐ Premium' : 'Gratuito'}
                 </span>
               </div>
-              <div className="plan-progress-track">
-                <div
-                  className="plan-progress-bar"
-                  style={{ width: `${progressPercent}%` }}
-                />
-              </div>
-              <p className="plan-expiry-date">
-                Expira em {new Date(profile.plan_expires_at).toLocaleDateString('pt-BR')}
-              </p>
+              <FiChevronRight className="plan-card-arrow" />
             </div>
-          ) : (
-            <div className="plan-details">
-              <p className="plan-upgrade-text">
-                Tenha acesso a todos os recursos exclusivos!
-              </p>
-              <button className="btn btn-primary plan-upgrade-btn">
-                Seja Premium ⭐
-              </button>
-            </div>
-          )}
-        </div>
 
-        {/* Logout Card */}
-        <button className="profile-card logout-card" onClick={handleLogout}>
-          <FiLogOut />
-          <span>Sair da conta</span>
-        </button>
-      </section>
+            {isPremium ? (
+              <div className="plan-details">
+                <div className="plan-expiry">
+                  <FiClock />
+                  <span>
+                    {remaining} {remaining === 1 ? 'dia restante' : 'dias restantes'}
+                  </span>
+                </div>
+                <div className="plan-progress-track">
+                  <div
+                    className="plan-progress-bar"
+                    style={{ width: `${progressPercent}%` }}
+                  />
+                </div>
+                <p className="plan-expiry-date">
+                  Expira em {new Date(profile.plan_expires_at).toLocaleDateString('pt-BR')}
+                </p>
+              </div>
+            ) : (
+              <div className="plan-details">
+                <p className="plan-upgrade-text">
+                  Tenha acesso a todos os recursos exclusivos!
+                </p>
+                <button className="btn btn-primary plan-upgrade-btn">
+                  Seja Premium ⭐
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Logout Card */}
+          <button className="profile-card logout-card" onClick={handleLogout}>
+            <FiLogOut />
+            <span>Sair da conta</span>
+          </button>
+        </section>
+      </div>
     </div>
   );
 }
