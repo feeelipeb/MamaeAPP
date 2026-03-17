@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 import { FiArrowLeft, FiCamera } from 'react-icons/fi';
 import './BabyDetailPage.css';
@@ -43,7 +43,6 @@ function calculateAge(birthDate) {
 const futureModules = [
   { id: 'sleep', title: 'Sono', emoji: '😴', description: 'Registre sonecas e noites' },
   { id: 'food', title: 'Alimentação', emoji: '🍼', description: 'Mamadas e introdução' },
-  { id: 'conquistas', title: 'Conquistas', emoji: '🏆', description: 'Marcos de desenvolvimento' },
   { id: 'vaccines', title: 'Vacinas', emoji: '💉', description: 'Calendário em dia' },
   { id: 'activities', title: 'Atividades', emoji: '🎮', description: 'Marcos de desenvolvimento' }
 ];
@@ -172,6 +171,14 @@ export default function BabyDetailPage() {
       </div>
 
       <div className="baby-modules-grid">
+        {/* Active Module: Conquistas */}
+        <Link to={`/dashboard/conquistas/${baby.id}`} className="module-card active-module">
+          <div className="module-card-icon">🏆</div>
+          <h3>Conquistas</h3>
+          <p>Marcos de desenvolvimento</p>
+          <div className="active-badge"><span>✨</span> Acessar</div>
+        </Link>
+
         {futureModules.map(mod => (
           <div key={mod.id} className="module-card soon">
             <div className="module-card-icon">{mod.emoji}</div>

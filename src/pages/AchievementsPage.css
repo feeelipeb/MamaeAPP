@@ -7,6 +7,19 @@
 
 .page-header {
   margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.switch-baby-btn {
+  font-weight: 700;
+  color: var(--lilac-dark);
+  border: 1px solid var(--lilac-light);
+  padding: 10px 16px;
+  border-radius: 12px;
+  white-space: nowrap;
 }
 
 .empty-state {
@@ -290,14 +303,130 @@
   color: var(--lilac);
 }
 
+/* Baby Selection Screen */
+.baby-selection-screen {
+  padding-bottom: 100px;
+}
+
+.text-center {
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.baby-selection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  justify-content: center;
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+
+.baby-select-card {
+  background: white;
+  border-radius: 24px;
+  padding: 32px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.baby-select-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.baby-select-card.boy {
+  border-color: rgba(96, 165, 250, 0.2);
+}
+
+.baby-select-card.boy:hover {
+  border-color: #60A5FA;
+  background: #F0F9FF;
+}
+
+.baby-select-card.girl {
+  border-color: rgba(244, 114, 182, 0.2);
+}
+
+.baby-select-card.girl:hover {
+  border-color: #F472B6;
+  background: #FFF1F2;
+}
+
+.baby-select-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 4px solid white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.baby-select-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.baby-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: #f8fafc;
+}
+
+.baby-select-card h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.baby-select-card p {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  color: var(--text-secondary);
+}
+
+.btn-select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 800;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.boy .btn-select {
+  background: #60A5FA;
+  color: white;
+}
+
+.girl .btn-select {
+  background: #F472B6;
+  color: white;
+}
+
+.baby-selection-screen .page-header p {
+  max-width: 400px;
+  margin-top: 8px;
+}
+
 @media (max-width: 600px) {
-  .milestones-grid {
+  .baby-selection-grid {
     grid-template-columns: 1fr;
-  }
-  
-  .progress-info {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
   }
 }

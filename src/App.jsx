@@ -46,8 +46,9 @@ function App() {
             {/* Routine Module */}
             <Route path="routine" element={<RoutinePage />} />
 
-            {/* Achievements Module */}
+            {/* Achievements Module with optional child selection */}
             <Route path="conquistas" element={<AchievementsPage />} />
+            <Route path="conquistas/:childId" element={<AchievementsPage />} />
 
             {/* Activities Module (Atividades) */}
             <Route path="atividades" element={<ActivitiesPage />} />

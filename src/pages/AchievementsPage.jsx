@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 import { useAuth } from '../contexts/AuthContext';
 import { MILESTONES_DATA, CATEGORIES } from '../data/milestonesData';
@@ -9,9 +10,11 @@ import './AchievementsPage.css';
 import './ActivitiesModule.css'; // Reusing styles from Activities for consistency
 
 export default function AchievementsPage() {
+  const { childId } = useParams();
+  const navigate = useNavigate();
   const { user } = useAuth();
   const [children, setChildren] = useState([]);
-  const [selectedChildId, setSelectedChildId] = useState(null);
+  const [selectedChildId, setSelectedChildId] = useState(childId || null);
   const [achievedMilestones, setAchievedMilestones] = useState({});
   const [selectedCategory, setSelectedCategory] = useState('Todos');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,7 +24,7 @@ export default function AchievementsPage() {
 
   useEffect(() => {
     fetchChildren();
-  }, [user]);
+  }, [user, childId]);
 
   useEffect(() => {
     if (selectedChildId) {
@@ -38,8 +41,15 @@ export default function AchievementsPage() {
 
       if (error) throw error;
       setChildren(data || []);
+      
       if (data && data.length > 0) {
-        setSelectedChildId(data[0].id);
+        if (childId) {
+          setSelectedChildId(childId);
+        } else if (data.length === 1) {
+          setSelectedChildId(data[0].id);
+        } else {
+          setSelectedChildId(null); // Force selection screen if > 1 and no ID in URL
+        }
       } else {
         setLoading(false);
       }
@@ -105,6 +115,40 @@ export default function AchievementsPage() {
 
   const getSelectedChild = () => children.find(c => c.id === selectedChildId);
 
+  if (children.length > 1 && !selectedChildId && !loading) {
+    return (
+      <div className="achievements-page baby-selection-screen animate-fade-in">
+        <header className="page-header text-center">
+          <h1>🏆 Conquistas</h1>
+          <p>Selecione um bebê para ver os marcos de desenvolvimento</p>
+        </header>
+        
+        <div className="baby-selection-grid">
+          {children.map(child => (
+            <div 
+              key={child.id} 
+              className={`baby-select-card ${child.gender === 'female' ? 'girl' : 'boy'}`}
+              onClick={() => setSelectedChildId(child.id)}
+            >
+              <div className="baby-select-photo">
+                {child.photo_url ? (
+                  <img src={child.photo_url} alt={child.name} />
+                ) : (
+                  <div className="baby-photo-placeholder">
+                    {child.gender === 'female' ? '👧' : '🧒'}
+                  </div>
+                )}
+              </div>
+              <h3>{child.name}</h3>
+              <p>{child.gender === 'female' ? 'Menina' : 'Menino'}</p>
+              <button className="btn-select">Ver Conquistas &rarr;</button>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   if (children.length === 0 && !loading) {
     return (
       <div className="achievements-page empty-state animate-fade-in">
@@ -125,23 +169,17 @@ export default function AchievementsPage() {
   return (
     <div className="achievements-page animate-fade-in">
       <header className="page-header">
-        <h1>🏆 Conquistas {getSelectedChild()?.name ? `de ${getSelectedChild().name}` : ''}</h1>
-        <p>Cada marco é uma vitória que merece ser celebrada</p>
+        <div className="header-main">
+          <h1>🏆 Conquistas {getSelectedChild()?.name ? `de ${getSelectedChild().name}` : ''}</h1>
+          <p>Cada marco é uma vitória que merece ser celebrada</p>
+        </div>
+        {children.length > 1 && (
+          <button className="btn btn-ghost switch-baby-btn" onClick={() => setSelectedChildId(null)}>
+            🔄 Trocar Bebê
+          </button>
+        )}
       </header>
 
-      {children.length > 1 && (
-        <div className="child-selector">
-          {children.map(child => (
-            <button
-              key={child.id}
-              className={`child-chip ${selectedChildId === child.id ? 'active' : ''}`}
-              onClick={() => setSelectedChildId(child.id)}
-            >
-              {child.name}
-            </button>
-          ))}
-        </div>
-      )}
 
       <section className="progress-section card">
         <div className="progress-info">
