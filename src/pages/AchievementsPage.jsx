@@ -22,23 +22,29 @@ export default function AchievementsPage() {
   const [activeMilestone, setActiveMilestone] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // 1. Fetch children on mount or when user changes
   useEffect(() => {
-    fetchChildren();
-  }, [user, childId]);
+    if (user) {
+      fetchChildren();
+    }
+  }, [user]);
 
+  // 2. Handle selection based on URL and children data
   useEffect(() => {
+    if (loading) return;
+
     if (childId) {
       setSelectedChildId(childId);
-    } else if (children.length > 0) {
-      // Direct entry or switch baby
-      if (children.length === 1) {
-        setSelectedChildId(children[0].id);
-      } else {
-        setSelectedChildId(null); // Show selection screen
-      }
+    } else if (children.length === 1) {
+      // Auto-select if only one baby
+      setSelectedChildId(children[0].id);
+    } else {
+      // Show selection screen if children.length > 1 and no childId in URL
+      setSelectedChildId(null);
     }
-  }, [childId, children]);
+  }, [childId, children, loading]);
 
+  // 3. Fetch milestones when child selection changes
   useEffect(() => {
     if (selectedChildId) {
       fetchAchievedMilestones();
@@ -47,6 +53,7 @@ export default function AchievementsPage() {
 
   const fetchChildren = async () => {
     try {
+      setLoading(true);
       const { data, error } = await supabase
         .from('children')
         .select('*')
@@ -54,20 +61,9 @@ export default function AchievementsPage() {
 
       if (error) throw error;
       setChildren(data || []);
-      
-      if (data && data.length > 0) {
-        if (childId) {
-          setSelectedChildId(childId);
-        } else if (data.length === 1) {
-          setSelectedChildId(data[0].id);
-        } else {
-          setSelectedChildId(null); // Force selection screen if > 1 and no ID in URL
-        }
-      } else {
-        setLoading(false);
-      }
     } catch (err) {
       console.error('Error fetching children:', err);
+    } finally {
       setLoading(false);
     }
   };
@@ -131,8 +127,9 @@ export default function AchievementsPage() {
   if (children.length > 1 && !selectedChildId && !loading) {
     return (
       <div className="achievements-page baby-selection-screen animate-fade-in">
-        <header className="page-header text-center">
-          <h1>🏆 Conquistas</h1>
+        <header className="selection-header">
+          <div className="trophy-icon-big">🏆</div>
+          <h1>Conquistas</h1>
           <p>Selecione um bebê para ver os marcos de desenvolvimento</p>
         </header>
         
@@ -143,18 +140,24 @@ export default function AchievementsPage() {
               className={`baby-select-card ${child.gender === 'female' ? 'girl' : 'boy'}`}
               onClick={() => navigate(`/dashboard/conquistas/${child.id}`)}
             >
-              <div className="baby-select-photo">
-                {child.photo_url ? (
-                  <img src={child.photo_url} alt={child.name} />
-                ) : (
-                  <div className="baby-photo-placeholder">
-                    {child.gender === 'female' ? '👧' : '🧒'}
-                  </div>
-                )}
+              <div className="baby-select-photo-wrapper">
+                <div className="baby-select-photo">
+                  {child.photo_url ? (
+                    <img src={child.photo_url} alt={child.name} />
+                  ) : (
+                    <div className="baby-photo-placeholder">
+                      {child.gender === 'female' ? '👧' : '🧒'}
+                    </div>
+                  )}
+                </div>
               </div>
-              <h3>{child.name}</h3>
-              <p>{child.gender === 'female' ? 'Menina' : 'Menino'}</p>
-              <button className="btn-select">Ver Conquistas &rarr;</button>
+              <h3 className="baby-select-name">{child.name}</h3>
+              <p className="baby-select-gender">
+                {child.gender === 'female' ? 'Menina' : 'Menino'}
+              </p>
+              <button className="btn-select">
+                Ver Conquistas &rarr;
+              </button>
             </div>
           ))}
         </div>
