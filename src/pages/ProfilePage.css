@@ -1,8 +1,9 @@
+```css
 /* ===== Profile Page ===== */
 .profile-page {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 40px 24px 100px;
+  padding: 0 0 100px 0; /* Remove top padding to allow full bleed header */
 }
 
 /* ── Loading ── */
@@ -22,51 +23,72 @@
 
 /* ===== Hero Section ===== */
 .profile-hero {
+  position: relative;
+  width: 100%;
+  background: white;
+  margin-bottom: 32px;
+  overflow: hidden;
+  border-radius: 0 0 40px 40px;
+  /* box-shadow: var(--shadow-sm); */ /* Removed shadow for a cleaner look */
+}
+
+.hero-background {
+  height: 160px;
+  background: linear-gradient(135deg, #FF6F91 0%, #FF85A1 100%);
+  width: 100%;
+}
+
+.profile-header-main {
+  margin-top: -70px; /* Overlap the photo on the background */
+  padding: 0 24px 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0;
-  position: sticky;
-  top: 40px;
 }
 
 /* ── Avatar ── */
 .avatar-wrapper {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   cursor: pointer;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  transition: transform 0.3s;
+}
+
+.avatar-white-border {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--pink) 0%, var(--lilac) 100%);
-  padding: 4px;
-  transition: var(--transition);
+  background: white;
+  padding: 10px; /* The white border thickness */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.avatar-wrapper:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 32px rgba(216, 180, 254, 0.4);
-}
-
-.avatar-img {
+.avatar-img, .avatar-placeholder {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid white;
 }
 
 .avatar-placeholder {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--pink-light) 0%, var(--lilac-light) 100%);
+  background: #E9D5FF;
+  color: #7E22CE;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
-  border: 3px solid white;
+  font-size: 3.5rem;
+  font-weight: 800;
+  font-family: 'Poppins', sans-serif;
+}
+
+.avatar-wrapper:hover {
+  transform: scale(1.05);
 }
 
 .avatar-camera {
@@ -108,12 +130,21 @@
   display: none;
 }
 
-/* ── Name & Label ── */
+/* ── Typography ── */
 .profile-name {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 4px;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #FF667D; /* Matching the reference red/pinkish tone */
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.profile-bio {
+  font-size: 1.1rem;
+  color: #94A3B8;
+  font-weight: 600;
+  max-width: 400px;
+  margin-bottom: 0;
 }
 
 .profile-children-label {
@@ -286,26 +317,31 @@
 
 /* ===== Mobile ===== */
 @media (max-width: 768px) {
-  .profile-page {
-    padding: 24px 16px 120px;
-  }
-
   .profile-content {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 0;
   }
 
+  .profile-page {
+    padding-bottom: 120px;
+  }
+  
+  .profile-cards {
+    padding: 0 20px;
+    margin-top: 10px;
+  }
+  
   .profile-hero {
-    position: static;
-    padding: 0 0 24px;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .avatar-wrapper {
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
   }
 
   .profile-name {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
   }
 }

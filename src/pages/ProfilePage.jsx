@@ -146,33 +146,38 @@ export default function ProfilePage() {
       <div className="profile-content">
         {/* ── Avatar Section ── */}
         <section className="profile-hero">
-          <div
-            className="avatar-wrapper"
-            onClick={() => fileInputRef.current?.click()}
-            title="Alterar foto de perfil"
-          >
-            {profile?.avatar_url ? (
-              <img src={profile.avatar_url} alt="Avatar" className="avatar-img" />
-            ) : (
-              <div className="avatar-placeholder">
-                {firstName ? firstName.charAt(0).toUpperCase() : <FiCamera />}
+          <div className="hero-background" />
+          
+          <div className="profile-header-main">
+            <div 
+              className="avatar-wrapper" 
+              onClick={() => fileInputRef.current?.click()}
+            >
+              <div className="avatar-white-border">
+                {profile?.avatar_url ? (
+                  <img src={profile.avatar_url} alt="Avatar" className="avatar-img" />
+                ) : (
+                  <div className="avatar-placeholder">
+                    {firstName ? firstName.charAt(0).toUpperCase() : 'M'}
+                  </div>
+                )}
               </div>
-            )}
-            <div className={`avatar-camera ${uploading ? 'uploading' : ''}`}>
-              {uploading ? <div className="mini-spinner" /> : <FiCamera />}
             </div>
-            <input
-              type="file"
-              ref={fileInputRef}
-              onChange={handleAvatarUpload}
-              accept="image/*"
+            
+            <input 
+              type="file" 
+              ref={fileInputRef} 
+              onChange={handleAvatarUpload} 
+              accept="image/*" 
               className="avatar-input"
+              style={{ display: 'none' }}
             />
+            
+            <h1 className="profile-name">{profile?.name || 'Usuária'}</h1>
+            <p className="profile-bio">
+              {childrenLabel ? `${childrenLabel} 💕` : 'Mamãe em treinamento'}
+            </p>
           </div>
-          <h1 className="profile-name">{profile?.name || 'Usuária'}</h1>
-          <p className="profile-children-label">
-            {childrenLabel || 'Mamãe'} 💕
-          </p>
         </section>
 
         {/* ── Cards Section ── */}
