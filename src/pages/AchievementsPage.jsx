@@ -29,15 +29,15 @@ export default function AchievementsPage() {
   useEffect(() => {
     if (childId) {
       setSelectedChildId(childId);
-    } else {
-      // Direct entry: handle automatic selection or selection screen
+    } else if (children.length > 0) {
+      // Direct entry or switch baby
       if (children.length === 1) {
         setSelectedChildId(children[0].id);
-      } else if (children.length > 1) {
-        setSelectedChildId(null);
+      } else {
+        setSelectedChildId(null); // Show selection screen
       }
     }
-  }, [childId, children.length]);
+  }, [childId, children]);
 
   useEffect(() => {
     if (selectedChildId) {
