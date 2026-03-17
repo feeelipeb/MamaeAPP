@@ -156,7 +156,7 @@ export default function DashboardPage() {
       <header className="vibrant-header">
         <div className="header-top">
           <button className="menu-btn" onClick={focusSearch}><FiSearch /></button>
-          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Logo" className="logo-center" />
+          <img src={`${import.meta.env.BASE_URL}logo2.png`} alt="Logo" className="logo-center" />
           <Link to="/dashboard/profile" className="profile-btn">
             <div className="avatar-placeholder">
               {profile?.avatar_url ? (
