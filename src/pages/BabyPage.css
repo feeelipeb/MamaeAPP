@@ -201,13 +201,15 @@
   width: 100%;
   max-width: 500px;
   border-radius: var(--radius-lg);
-  padding: 32px 24px 24px; /* Menos padding inferior para economizar espaço */
+  padding: 32px 24px 24px;
   position: relative;
   box-shadow: var(--shadow-lg);
   margin: auto;
   flex-shrink: 0;
-  display: flex; /* Transforma em flex container */
-  flex-direction: column; /* Organiza os itens verticalmente */
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .modal-close {
@@ -248,14 +250,7 @@
   gap: 20px;
 }
 
-.form-row {
-  display: flex;
-  gap: 16px;
-}
-
-.form-group.half {
-  flex: 1;
-}
+/* Global form-row and form-group.half handled in index.css */
 
 .form-group label {
   display: block;
@@ -337,14 +332,7 @@
 }
 
 /* Form Layout */
-.form-row {
-  display: flex;
-  gap: 16px;
-}
-
-.form-group.half {
-  flex: 1;
-}
+/* Global form-row and form-group.half handled in index.css */
 
 /* Gender Selector */
 .gender-selector {

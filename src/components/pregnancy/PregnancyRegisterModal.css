@@ -1,6 +1,8 @@
 .pregnancy-modal {
   max-width: 500px;
-  width: 90%;
+  width: 95%; /* Wider on small screens */
+  max-height: 90vh; /* Safety for small screens */
+  overflow-y: auto;
 }
 
 .pregnancy-form {
@@ -45,14 +47,7 @@
   display: none;
 }
 
-.form-row {
-  display: flex;
-  gap: 16px;
-}
-
-.form-group.half {
-  flex: 1;
-}
+/* Global form-row and form-group.half handled in index.css */
 
 .photo-hint {
   text-align: center;

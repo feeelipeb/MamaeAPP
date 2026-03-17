@@ -193,6 +193,40 @@ p {
   box-shadow: 0 0 0 4px rgba(216, 180, 254, 0.15);
 }
 
+/* Global Form Layouts */
+.form-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap; /* Essential for responsiveness */
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 200px; /* Forces wrap on small screens */
+}
+
+@media (max-width: 500px) {
+  .form-group {
+    min-width: 100%; /* Fully stack on very small screens */
+  }
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap; /* Prevent button overflow */
+  width: 100%;
+}
+
+.modal-actions button {
+  flex: 1;
+  min-width: 120px;
+}
+
 /* ===== Cards ===== */
 .card {
   background: rgba(255, 255, 255, 0.75);
