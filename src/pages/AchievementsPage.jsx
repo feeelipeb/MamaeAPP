@@ -27,6 +27,16 @@ export default function AchievementsPage() {
   }, [user, childId]);
 
   useEffect(() => {
+    if (childId) {
+      setSelectedChildId(childId);
+    } else if (children.length > 1) {
+      setSelectedChildId(null);
+    } else if (children.length === 1) {
+      setSelectedChildId(children[0].id);
+    }
+  }, [childId, children.length]);
+
+  useEffect(() => {
     if (selectedChildId) {
       fetchAchievedMilestones();
     }
@@ -128,7 +138,7 @@ export default function AchievementsPage() {
             <div 
               key={child.id} 
               className={`baby-select-card ${child.gender === 'female' ? 'girl' : 'boy'}`}
-              onClick={() => setSelectedChildId(child.id)}
+              onClick={() => navigate(`/dashboard/conquistas/${child.id}`)}
             >
               <div className="baby-select-photo">
                 {child.photo_url ? (
