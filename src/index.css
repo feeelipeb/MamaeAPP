@@ -29,6 +29,7 @@
   --bottom-nav-height: 80px;
 
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --input-bg: #f5f5f5;
 }
 
 /* ===== Reset ===== */
@@ -176,7 +177,7 @@ p {
   padding: 14px 18px;
   border: 2px solid rgba(216, 180, 254, 0.3);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--input-bg);
   backdrop-filter: blur(8px);
   font-size: 0.95rem;
   color: var(--text-primary);
@@ -189,7 +190,7 @@ p {
 
 .input-field:focus {
   border-color: var(--lilac);
-  background: rgba(255, 255, 255, 0.95);
+  background: #ffffff;
   box-shadow: 0 0 0 4px rgba(216, 180, 254, 0.15);
 }
 

@@ -22,7 +22,7 @@
   justify-content: center;
   cursor: pointer;
   overflow: hidden;
-  background: var(--bg-color);
+  background: var(--input-bg);
   border: 2px dashed var(--pink-dark);
   transition: var(--transition);
 }
