@@ -131,6 +131,10 @@ p {
   transition: var(--transition);
   border: none;
   cursor: pointer;
+  max-width: 100%;
+  white-space: normal;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .btn-primary {
@@ -183,10 +187,25 @@ p {
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--text-secondary);
+  max-width: 100%;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  max-width: 100%;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .input-field {
   width: 100%;
+  max-width: 100%;
   padding: 14px 18px;
   border: 2px solid rgba(216, 180, 254, 0.3);
   border-radius: var(--radius-md);
@@ -213,7 +232,9 @@ p {
   gap: 16px;
   flex-wrap: wrap;
   width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
+  overflow: hidden;
 }
 @media (max-width: 480px) {
   .form-row {
@@ -226,8 +247,11 @@ p {
   flex-direction: column;
   gap: 8px;
   flex: 1;
-  min-width: 0; /* Important: allow shrinking below min-content */
+  min-width: 0;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 @media (max-width: 500px) {
@@ -241,7 +265,22 @@ p {
   gap: 12px;
   flex-wrap: wrap;
   width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
+  margin-top: auto;
+}
+
+@media (max-width: 480px) {
+  .modal-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  
+  .modal-actions button {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
 }
 
 .modal-actions button {

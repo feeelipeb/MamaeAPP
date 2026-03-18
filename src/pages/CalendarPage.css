@@ -134,9 +134,16 @@
 /* Category Selector in Modal */
 .category-selector {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: 8px;
   margin-top: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .category-selector {
+    grid-template-columns: 1fr;
+  }
 }
 
 .cat-btn {
@@ -153,6 +160,9 @@
   cursor: pointer;
   transition: all 0.2s;
   color: var(--text-secondary);
+  white-space: normal;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .cat-btn:hover {
@@ -167,10 +177,6 @@
 }
 
 /* Modal Details Refinement */
-.calendar-details-modal {
-  max-width: 480px;
-  padding: 24px;
-}
 
 .modal-header h3 {
   font-size: 1.3rem;
