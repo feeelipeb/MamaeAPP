@@ -115,6 +115,14 @@
   border-color: rgba(216, 180, 254, 0.5);
 }
 
+@media (max-width: 480px) {
+  .baby-list-card {
+    padding: 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+}
+
 .baby-card-photo {
   width: 80px;
   height: 80px;
@@ -150,6 +158,7 @@
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 4px;
+  word-break: break-word;
 }
 
 .baby-age {
@@ -198,7 +207,7 @@
 
 .modal-content {
   background: var(--white);
-  width: 100%;
+  width: 92%;
   max-width: 500px;
   border-radius: var(--radius-lg);
   padding: 32px 24px 24px;
@@ -210,6 +219,13 @@
   flex-direction: column;
   max-height: 90vh;
   overflow-y: auto;
+  box-sizing: border-box;
+}
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 28px 20px 20px;
+    width: 94%;
+  }
 }
 
 .modal-close {
@@ -326,6 +342,7 @@
 .gender-selector {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .gender-card {

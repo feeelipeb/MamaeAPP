@@ -44,6 +44,8 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -53,6 +55,9 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 a {
@@ -198,8 +203,13 @@ p {
 .form-row {
   display: flex;
   gap: 16px;
-  flex-wrap: wrap; /* Essential for responsiveness */
+  flex-wrap: wrap;
   width: 100%;
+}
+@media (max-width: 480px) {
+  .form-row {
+    gap: 12px;
+  }
 }
 
 .form-group {

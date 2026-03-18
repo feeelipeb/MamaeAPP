@@ -1,8 +1,16 @@
 .pregnancy-modal {
   max-width: 500px;
-  width: 95%; /* Wider on small screens */
-  max-height: 90vh; /* Safety for small screens */
+  width: 92%; /* Consistent with other modals */
+  max-height: 90vh;
   overflow-y: auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .pregnancy-modal {
+    width: 94%;
+    padding: 24px 20px;
+  }
 }
 
 .pregnancy-form {
