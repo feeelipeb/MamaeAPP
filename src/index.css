@@ -124,9 +124,9 @@ p {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 24px;
+  padding: 10px 20px;
   border-radius: var(--radius-md);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   transition: var(--transition);
   border: none;
@@ -205,13 +205,14 @@ p {
 
 .input-field {
   width: 100%;
-  max-width: 100%;
-  padding: 14px 18px;
+  max-width: 96%; /* Slightly constrained for better aesthetics in wide modals */
+  margin: 0 auto; /* Centered if max-width kicks in */
+  padding: 10px 14px; /* Reduced vertical padding */
   border: 2px solid rgba(216, 180, 254, 0.3);
   border-radius: var(--radius-md);
   background: var(--input-bg);
   backdrop-filter: blur(8px);
-  font-size: 0.95rem;
+  font-size: 0.9rem; /* Slightly smaller font */
   color: var(--text-primary);
   transition: var(--transition);
 }
