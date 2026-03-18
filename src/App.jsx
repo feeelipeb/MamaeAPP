@@ -16,6 +16,7 @@ import MenuStagePage from './pages/MenuStagePage';
 import ActivitiesPage from './pages/ActivitiesPage';
 import ActivityStagePage from './pages/ActivityStagePage';
 import AchievementsPage from './pages/AchievementsPage';
+import InstallManager from './components/InstallManager';
 
 const moduleRoutes = [
   'memories', 'stories',
@@ -31,7 +32,9 @@ function App() {
             path="/dashboard"
             element={
               <ProtectedRoute>
-                <DashboardLayout />
+                <InstallManager>
+                  <DashboardLayout />
+                </InstallManager>
               </ProtectedRoute>
             }
           >
