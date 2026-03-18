@@ -292,17 +292,14 @@ p {
 /* ===== Modals ===== */
 .modal-backdrop {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(61, 44, 78, 0.4);
   backdrop-filter: blur(4px);
   z-index: 1000;
   display: flex;
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
-  padding: 32px 16px; /* Vertical padding for tall modals, horizontal is safety */
+  align-items: center;
+  justify-content: center;
+  padding: 16px; /* Restored standard backdrop padding */
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -311,16 +308,17 @@ p {
 
 .modal-content {
   background: var(--white);
-  width: calc(100% - 64px); /* Explicit 32px padding on EACH side on mobile */
+  width: 94%; /* Restored fuller width */
   max-width: 480px;
   border-radius: var(--radius-lg);
-  padding: 32px 24px;
+  padding: 36px 32px; /* Increased internal padding for better framing */
   position: relative;
   box-shadow: var(--shadow-lg);
+  margin: auto;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  max-height: 85vh;
+  max-height: 90vh;
   overflow-y: auto;
   overflow-x: hidden;
   box-sizing: border-box;
@@ -330,8 +328,8 @@ p {
 
 @media (max-width: 480px) {
   .modal-content {
-    padding: 24px 20px;
-    width: calc(100% - 56px); /* Very safe margin for small phones */
+    padding: 32px 24px; /* Still generous padding on mobile */
+    width: 95%;
   }
 }
 
