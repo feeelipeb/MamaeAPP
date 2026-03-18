@@ -3,12 +3,6 @@
   max-width: 480px; 
 }
 
-@media (max-width: 480px) {
-  .pregnancy-modal {
-    width: 92%; /* Ensure visible margins on smallest screens */
-  }
-}
-
 .pregnancy-form {
   display: flex;
   flex-direction: column;
