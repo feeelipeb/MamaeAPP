@@ -1,15 +1,11 @@
 .pregnancy-modal {
-  max-width: 500px;
-  width: 92%; /* Consistent with other modals */
-  max-height: 90vh;
-  overflow-y: auto;
-  box-sizing: border-box;
+  /* Inherits base styles from .modal-content in index.css */
+  max-width: 480px; 
 }
 
 @media (max-width: 480px) {
   .pregnancy-modal {
-    width: 94%;
-    padding: 24px 20px;
+    width: 92%; /* Ensure visible margins on smallest screens */
   }
 }
 

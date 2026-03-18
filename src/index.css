@@ -205,6 +205,7 @@ p {
   gap: 16px;
   flex-wrap: wrap;
   width: 100%;
+  box-sizing: border-box;
 }
 @media (max-width: 480px) {
   .form-row {
@@ -217,7 +218,8 @@ p {
   flex-direction: column;
   gap: 8px;
   flex: 1;
-  min-width: 200px; /* Forces wrap on small screens */
+  min-width: 0; /* Important: allow shrinking below min-content */
+  width: 100%;
 }
 
 @media (max-width: 500px) {
@@ -229,13 +231,98 @@ p {
 .modal-actions {
   display: flex;
   gap: 12px;
-  flex-wrap: wrap; /* Prevent button overflow */
+  flex-wrap: wrap;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .modal-actions button {
   flex: 1;
-  min-width: 120px;
+  min-width: 100px; /* Reduced min-width to avoid mandatory stacking/overflow */
+  box-sizing: border-box;
+}
+
+/* ===== Modals ===== */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(61, 44, 78, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 0; /* Vertical padding only, horizontal handled by modal margin/width */
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-content {
+  background: var(--white);
+  width: 90%;
+  max-width: 480px;
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  margin: auto;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 24px 16px;
+    width: 92%;
+    margin: 20px auto;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  border-radius: 50%;
+  z-index: 1001;
+}
+
+.modal-close:hover {
+  background: rgba(0,0,0,0.05);
+  color: var(--text-primary);
+}
+
+.modal-title {
+  text-align: center;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 0 24px;
+}
+
+.modal-subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: -16px 0 24px;
 }
 
 /* ===== Cards ===== */
