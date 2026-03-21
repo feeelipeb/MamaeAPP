@@ -7,6 +7,19 @@ import { FiChevronLeft, FiArrowRight, FiChevronRight, FiX } from 'react-icons/fi
 import { createPortal } from 'react-dom';
 import ActivityModal from '../components/ActivityModal';
 
+const CATEGORY_COLORS = {
+  Cognitivo: '#8B5CF6',
+  Motor: '#F59E0B',
+  Linguagem: '#3B82F6',
+  Criativo: '#EC4899',
+  Social: '#10B981',
+  Sensorial: '#F97316',
+};
+
+function getCategoryColor(category) {
+  return CATEGORY_COLORS[category] || '#6B7280';
+}
+
 export default function ActivityStagePage() {
   const { slug } = useParams();
   const navigate = useNavigate();
