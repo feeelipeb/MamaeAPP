@@ -9,7 +9,7 @@ const modules = [
   { path: '/dashboard', label: 'Início', icon: <FiHome />, emoji: '🏠', exact: true },
   { path: '/dashboard/baby', label: 'Bebê', emoji: '👶' },
   { path: '/dashboard/menu', label: 'Cardápio Infantil', emoji: '🍽️' },
-  { path: '/dashboard/pregnancy', label: 'Diário de Gestação', emoji: '🤰' },
+  { path: '/dashboard/pregnancy', label: 'Gravidez', emoji: '🤰' },
   { path: '/dashboard/calendar', label: 'Calendário', emoji: '📅' },
   { path: '/dashboard/memories', label: 'Lembranças', emoji: '📖' },
   { path: '/dashboard/conquistas', label: 'Conquistas', emoji: '🏆' },
