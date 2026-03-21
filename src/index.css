@@ -219,7 +219,7 @@ p {
 
 @media (max-width: 480px) {
   .input-field {
-    max-width: 50%;
+    max-width: 90%;
     padding: 8px 10px;
     font-size: 0.82rem;
     border-radius: var(--radius-sm);
@@ -267,6 +267,7 @@ p {
 @media (max-width: 500px) {
   .form-group {
     min-width: 100%; /* Fully stack on very small screens */
+    align-items: center;
   }
 }
 
