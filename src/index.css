@@ -205,16 +205,24 @@ p {
 
 .input-field {
   width: 100%;
-  max-width: 96%; /* Slightly constrained for better aesthetics in wide modals */
-  margin: 0 auto; /* Centered if max-width kicks in */
-  padding: 10px 14px; /* Reduced vertical padding */
+  max-width: 100%;
+  padding: 10px 12px;
   border: 2px solid rgba(216, 180, 254, 0.3);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   background: var(--input-bg);
   backdrop-filter: blur(8px);
-  font-size: 0.9rem; /* Slightly smaller font */
+  font-size: 0.85rem;
   color: var(--text-primary);
   transition: var(--transition);
+  box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .input-field {
+    padding: 8px 10px;
+    font-size: 0.82rem;
+    border-radius: var(--radius-sm);
+  }
 }
 
 .input-field::placeholder {
@@ -224,7 +232,7 @@ p {
 .input-field:focus {
   border-color: var(--lilac);
   background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(216, 180, 254, 0.15);
+  box-shadow: 0 0 0 3px rgba(216, 180, 254, 0.15);
 }
 
 /* Global Form Layouts */
